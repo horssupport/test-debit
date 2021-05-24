@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .form-group{
+                display: inline-block;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Convertisseur de débit :</h2>
+        <div class="form-group">
+            <label>Débit réception</label>
+            <input id="ko" type="number" placeholder="ko/s">
+        </div>
+        <div class="form-group">
+            <label>Mb/s</label>
+            <input id="mb" type="number" placeholder="">
+        </div>
+        <p>Pour les infrastructures filaires, le débit théorique d'un accès très haut débit est au <b>minimum de 30 Mbit/s</b> dans le sens descendant <a href="https://archives.arcep.fr/index.php?id=11710">selon l'ARCEP</a>.</p>
+        <script>
+            let ko = document.getElementById("ko");
+            let mb = document.getElementById("mb");
+
+            ko.addEventListener("input", function(){convDebit(this.id, this.value);});
+            mb.addEventListener("input", function(){convDebit(this.id, this.value);});
+
+            function convDebit(id, valeur){
+                if(id == "ko"){
+                    mb.value = (valeur*8)/1000;
+                }else if(id == "mb"){
+                    ko.value = (valeur*1000)/8;
+                }
+            }
+        </script>
+    </body>
+</html>
